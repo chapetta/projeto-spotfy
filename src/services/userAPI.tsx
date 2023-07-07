@@ -41,9 +41,9 @@ export const getUser = () => new Promise((resolve) => {
 export const createUser = (user:
 {
   name: string,
-  email: string,
-  image: string,
-  description: string
+  email?: string,
+  image?: string,
+  description?: string
 }) => new Promise((resolve) => {
   const emptyUser = {
     name: '',
