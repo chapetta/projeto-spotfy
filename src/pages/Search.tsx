@@ -80,7 +80,6 @@ function Search() {
                         <h3>{album.artistName}</h3>
                         <Link
                           to={`/album/${album.collectionId}`}
-                          data-testid={`link-to-album-${album.collectionId}`}
                         >
                           Saiba mais
                         </Link>
