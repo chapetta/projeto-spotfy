@@ -44,9 +44,12 @@ function Album() {
           <h2 data-testid="artist-name">{artistName}</h2>
           <h3 data-testid="album-name">{albumName}</h3>
           {albumInfos.length > 0 ? (
-            albumInfos.map((music, index) => (
-              <div key={index}>
-                <MusicCard musicInfo={music} />
+            albumInfos.map((music) => (
+              <div key={music.trackId}>
+                <MusicCard
+                  musicInfo={music}
+                  setLoading={setLoading}
+                />
               </div>
             ))
           ) : (
@@ -57,4 +60,5 @@ function Album() {
     </div>
   );
 }
+
 export default Album;
