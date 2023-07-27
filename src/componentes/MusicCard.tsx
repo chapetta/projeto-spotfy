@@ -12,9 +12,10 @@ interface Music {
 interface MusicCardProps {
   musicInfo: Music;
   setLoading: (loading: boolean) => void;
+  onRemove: (trackId: string) => void;
 }
 
-function MusicCard({ musicInfo, setLoading }: MusicCardProps) {
+function MusicCard({ musicInfo, setLoading, onRemove }: MusicCardProps) {
   const [favorite, setFavorite] = useState(false);
 
   useEffect(() => {
