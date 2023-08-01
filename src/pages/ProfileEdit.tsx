@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Header from '../componentes/Header';
 import Loading from '../componentes/Loading';
 import { getUser, updateUser } from '../services/userAPI';
+import '../App.css';
 
 interface User {
   name: string;
@@ -17,7 +18,7 @@ function ProfileEdit() {
   const [loading, setLoading] = useState(false);
   const [userName, setUserName] = useState('');
   const [userEmail, setUserEmail] = useState('');
-  const [userImage, setUserImage] = useState('');
+  const [userImage, setUserImage] = useState<File | string>('');
   const [userDescription, setUserDescription] = useState('');
   const [validateButton, setValidateButton] = useState(true);
 
@@ -38,7 +39,7 @@ function ProfileEdit() {
     return (
       userName.trim() !== ''
       && userEmail.trim() !== ''
-      && userImage.trim() !== ''
+      && userImage !== ''
       && userDescription.trim() !== ''
       && isValidEmail(userEmail)
     );
@@ -48,7 +49,7 @@ function ProfileEdit() {
     await updateUser({
       name: userName,
       email: userEmail,
-      image: userImage,
+      image: userImage instanceof File ? URL.createObjectURL(userImage) : userImage,
       description: userDescription,
     });
     navigate('/profile');
@@ -70,15 +71,20 @@ function ProfileEdit() {
         <Loading />
       ) : (
         <form>
-          <img src={user?.image} alt="imagem de perfil" />
-          <label>
-            <input
-              type="text"
-              onChange={({ target }) => setUserImage(target.value)}
-              value={userImage}
+          <input
+            type="file"
+            accept="image/*"
+            onChange={(e) => setUserImage(e.target.files?.[0] || '')}
+          />
+          {userImage instanceof File && (
+            <img
+              src={URL.createObjectURL(userImage)}
+              alt="imagem de perfil"
+              className="image-perfil"
             />
-          </label>
-          <p>{user?.name}</p>
+          )}
+
+          <h3>Nome</h3>
           <label>
             <input
               type="text"
@@ -86,7 +92,7 @@ function ProfileEdit() {
               value={userName}
             />
           </label>
-          <p>{user?.email}</p>
+          <h3>Email</h3>
           <label>
             <input
               type="text"
@@ -94,7 +100,7 @@ function ProfileEdit() {
               value={userEmail}
             />
           </label>
-          <p>{user?.description.length !== null ? user?.description : 'Description'}</p>
+          <h3>Descrição</h3>
           <label>
             <textarea
               rows={10}
