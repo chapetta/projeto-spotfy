@@ -23,7 +23,7 @@ function Login() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inputValue]);
 
-  const handleSubmit = async (e: { preventDefault: () => void; }) => {
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     setLoading(true);
 
@@ -39,20 +39,28 @@ function Login() {
 
   return (
     loading ? <Loading /> : (
-      <div>
-        <h1>ChapsTunes</h1>
-        <form onSubmit={handleSubmit}>
-          <label>
-            <input
-              placeholder="Nome"
-              value={inputValue}
-              onChange={({ target }) => setInputValue(target.value)}
-            />
-          </label>
-          <button disabled={validateButton} type="submit">
-            Entrar
-          </button>
-        </form>
+      <div className="login-container">
+        <div className="login-box">
+          <h1 className="login-title">
+            Chaps Tunes
+            {' '}
+            <i className="fas fa-headphones headphone-icon" />
+          </h1>
+          <form className="login-form" onSubmit={handleSubmit}>
+            <label className="login-label">
+              Nome:
+              <input
+                placeholder="Digite seu nome"
+                value={inputValue}
+                onChange={({ target }) => setInputValue(target.value)}
+                className="login-input"
+              />
+            </label>
+            <button disabled={validateButton} type="submit" className="login-button">
+              Entrar
+            </button>
+          </form>
+        </div>
       </div>
     )
   );

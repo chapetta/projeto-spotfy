@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import Header from '../componentes/Header';
 import Loading from '../componentes/Loading';
 import { getUser } from '../services/userAPI';
-import '../App.css';
 
 interface User {
   name: string;

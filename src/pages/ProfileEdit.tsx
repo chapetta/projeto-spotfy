@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import Header from '../componentes/Header';
 import Loading from '../componentes/Loading';
 import { getUser, updateUser } from '../services/userAPI';
-import '../App.css';
 
 interface User {
   name: string;
