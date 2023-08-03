@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Header from '../componentes/Header';
 import searchAlbumsAPI from '../services/searchAlbumnsAPI';
 import Loading from '../componentes/Loading';
+import '../Styles/Search.css';
 
 interface Album {
   collectionId: string;
@@ -49,21 +50,26 @@ function Search() {
   }, [inputValue]);
 
   return (
-    <div>
+    <div className="search-page">
       <Header />
       {loading ? (
         <Loading />
       ) : (
         <div>
-          <form>
+          <form className="search-form">
             <label>
               <input
                 value={inputValue}
                 onChange={({ target }) => setInputValue(target.value)}
                 placeholder="Nome do Artista"
+                className="search-input"
               />
             </label>
-            <button disabled={validateButton} onClick={searchArtist}>
+            <button
+              disabled={validateButton}
+              onClick={searchArtist}
+              className="search-button"
+            >
               Pesquisar
             </button>
           </form>
@@ -72,17 +78,13 @@ function Search() {
               {albums.length > 0 ? (
                 <div>
                   <h2>{`Resultado de álbuns de: "${searchedArtist}"`}</h2>
-                  <div>
+                  <div className="albums-container">
                     {albums.map((album) => (
-                      <div key={album.artistName}>
+                      <div key={album.artistName} className="album-card">
                         <img src={album.artworkUrl100} alt="Capa do Album" />
                         <h2>{album.collectionName}</h2>
                         <h3>{album.artistName}</h3>
-                        <Link
-                          to={`/album/${album.collectionId}`}
-                        >
-                          Saiba mais
-                        </Link>
+                        <Link to={`/album/${album.collectionId}`}>Saiba mais</Link>
                       </div>
                     ))}
                   </div>

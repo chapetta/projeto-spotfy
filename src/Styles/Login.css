@@ -1,36 +1,47 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Arial', sans-serif;
-  background: linear-gradient(to bottom right, #5a78f3, #1db954);
-  min-height: 100vh;
+/* Login.css */
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap');
+
+.login-container {
+  background-color: #1f2631;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.login-container {
-  background-color: rgba(255, 255, 255, 0.9);
+.login-box {
+  background-color: #fff;
   padding: 30px;
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   width: 400px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  text-align: center;
 }
 
 .login-title {
-  font-size: 48px;
+  font-size: 64px;
   font-weight: bold;
   color: #1db954;
   margin-bottom: 30px;
-  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
+  font-family: 'Exo 2', sans-serif;
 }
 
 .headphone-icon {
-  font-size: 36px;
+  font-size: 48px;
   margin-right: 10px;
+  color: #1db954;
+}
+
+.login-text-chaps {
+  font-size: 55px;
+  font-weight: bold;
+  color: #1f2631;
+  margin-right: 5px;
+}
+
+.login-text-tunes {
+  font-size: 45px;
+  color: #1db954;
 }
 
 .login-form {
@@ -43,23 +54,25 @@ body {
 .login-label {
   font-size: 20px;
   font-weight: bold;
-  color: #333;
+  color: #fff;
   margin-bottom: 10px;
 }
 
 .login-input {
   width: 100%;
+  max-width: 290px;
   padding: 15px;
   margin-bottom: 20px;
+  margin-top: 10px;
   border: none;
   border-radius: 10px;
-  background-color: #f6f6f6;
+  background-color: #1f2631;
   font-size: 18px;
-  color: #333;
+  color: #fff;
+  text-align: center;
   outline: none;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   border: 1px solid #ddd;
-  padding-left: 20px;
 }
 
 .login-input::placeholder {
@@ -68,10 +81,12 @@ body {
 
 .login-button {
   width: 100%;
+  max-width: 320px;
   padding: 15px;
+  margin-bottom: 20px;
   border: none;
   border-radius: 15px;
-  background-color: #4a7bff;
+  background-color: #1f2631;
   font-size: 20px;
   font-weight: bold;
   color: #fff;
@@ -82,5 +97,6 @@ body {
 }
 
 .login-button:hover {
-  background-color: #0056b3;
+  background-color: #1aa34a;
+  color: #fff;
 }

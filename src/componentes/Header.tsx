@@ -1,18 +1,16 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getUser } from '../services/userAPI';
-import Loading from './Loading';
+import '../Styles/Header.css';
 
 function Header() {
   const [user, setUser] = useState<string>('');
-  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     async function fetchUser() {
       try {
         const response: any = await getUser();
         const fetchedUser = response as { name: string };
-        setLoading(false);
         setUser(fetchedUser.name);
       } catch (error) {
         console.log('Não foi possível encontrar um usuário', error);
@@ -22,35 +20,39 @@ function Header() {
   }, []);
 
   return (
-    <header>
-      {loading ? (
-        <Loading />
-      ) : (
-        <div>
-          <p>{user}</p>
-          <nav>
-            <ul>
-              <li>
-                <Link to="/search">
-                  Pesquisa
-                </Link>
-
-              </li>
-              <li>
-                <Link to="/favorites">
-                  {' '}
-                  Favoritas
-                </Link>
-              </li>
-              <li>
-                <Link to="/profile">
-                  Perfil
-                </Link>
-              </li>
-            </ul>
-          </nav>
+    <header className="header">
+      <div className="header-container">
+        <div className="logo-container">
+          <div className="logo-text">
+            <i className="fas fa-headphones headphone-icon" />
+            <span className="header-text-chaps">Chaps</span>
+            <span className="header-text-tunes">Tunes</span>
+          </div>
         </div>
-      )}
+        <nav className="nav">
+          <ul className="nav-list">
+            <li className="nav-item">
+              <Link to="/search" className="nav-link">
+                Pesquisa
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/favorites" className="nav-link">
+                Favoritas
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/profile" className="nav-link">
+                Perfil
+              </Link>
+            </li>
+          </ul>
+        </nav>
+        <div className="user-info">
+          <img src="/path/to/user-icon.png" alt="User Icon" className="user-icon" />
+          <p className="user-name">{user}</p>
+        </div>
+      </div>
     </header>
   );
 }

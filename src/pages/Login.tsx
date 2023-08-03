@@ -1,8 +1,8 @@
-/* eslint-disable react/jsx-curly-spacing */
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createUser } from '../services/userAPI';
 import Loading from '../componentes/Loading';
+import '../Styles/Login.css';
 
 function Login() {
   const [validateButton, setValidateButton] = useState(true);
@@ -20,7 +20,6 @@ function Login() {
 
   useEffect(() => {
     validateLogin();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inputValue]);
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
@@ -42,9 +41,9 @@ function Login() {
       <div className="login-container">
         <div className="login-box">
           <h1 className="login-title">
-            Chaps Tunes
-            {' '}
             <i className="fas fa-headphones headphone-icon" />
+            <span className="login-text-chaps">Chaps</span>
+            <span className="login-text-tunes">Tunes</span>
           </h1>
           <form className="login-form" onSubmit={handleSubmit}>
             <label className="login-label">
