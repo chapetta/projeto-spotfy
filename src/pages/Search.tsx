@@ -77,7 +77,12 @@ function Search() {
             <div>
               {albums.length > 0 ? (
                 <div>
-                  <h2>{`Resultado de álbuns de: "${searchedArtist}"`}</h2>
+                  <h1
+                    className="search-results"
+                  >
+                    {`Resultado de álbuns de: "${searchedArtist}"`}
+
+                  </h1>
                   <div className="albums-container">
                     {albums.map((album) => (
                       <div key={album.artistName} className="album-card">

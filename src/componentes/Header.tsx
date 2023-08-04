@@ -1,7 +1,9 @@
+/* eslint-disable react/jsx-curly-spacing */
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getUser } from '../services/userAPI';
 import '../Styles/Header.css';
+import perfil from '../utils/perfil.png';
 
 function Header() {
   const [user, setUser] = useState<string>('');
@@ -49,7 +51,12 @@ function Header() {
           </ul>
         </nav>
         <div className="user-info">
-          <img src="/path/to/user-icon.png" alt="User Icon" className="user-icon" />
+          <img
+            src={perfil}
+            alt="icone de perfil"
+            className="image-perfil"
+            width="30px"
+          />
           <p className="user-name">{user}</p>
         </div>
       </div>

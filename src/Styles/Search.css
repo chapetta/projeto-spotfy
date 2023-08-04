@@ -1,38 +1,75 @@
-/* Estilos para a página de pesquisa */
-form {
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap');
+
+.search-page {
+  margin-top: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+body {
+  font-family: 'Exo 2', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+  background-image: url('../utils/pattern.png');
+  background-repeat: repeat;
+  background-color: rgba(240, 240, 240, 0.964);
+  background-blend-mode: overlay;
+}
+
+
+.search-form {
   margin-top: 30px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
-input {
+.search-input {
   padding: 10px;
   font-size: 18px;
-  border-radius: 10px 0 0 10px;
-  border: 1px solid #ccc;
+  border-radius: 20px;
+  border: none;
   outline: none;
+  width: 300px;
+  background-color: #36404a;
+  color: #fff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-button {
+.search-input::placeholder {
+  color: #a0a8b0;
+}
+
+.search-button {
   padding: 10px 20px;
   font-size: 18px;
   font-weight: bold;
-  background-color: #4a7bff;
+  background-color: #1db954;
   color: #fff;
   border: none;
-  border-radius: 0 10px 10px 0;
+  border-radius: 20px;
   cursor: pointer;
   outline: none;
+  width: 150px;
+  margin-top: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-button:hover {
-  background-color: #0056b3;
+.search-button:hover {
+  background-color: #25a145;
 }
 
-h2 {
-  margin-top: 20px;
+.search-results {
   font-size: 24px;
   font-weight: bold;
+  color: #1f2631;
+  font-family: 'Exo 2', sans-serif;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: left;
+  margin-left: 20px;
 }
 
 .albums-container {
@@ -44,10 +81,19 @@ h2 {
 
 .album-card {
   width: 300px;
+  height: 380px;
   margin: 10px;
   padding: 10px;
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #2b3641;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  position: relative;
+}
+
+.album-card:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transform: translateY(-5px);
 }
 
 .album-card img {
@@ -61,26 +107,36 @@ h2 {
   font-size: 20px;
   font-weight: bold;
   margin-top: 10px;
+  color: #fff;
+  font-family: 'Exo 2', sans-serif;
+  background-color: #1f2631;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .album-card h3 {
   font-size: 16px;
-  color: #666;
+  color: #ccc;
   margin-top: 5px;
 }
 
 .album-card a {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
   display: block;
-  margin-top: 10px;
   text-align: center;
-  background-color: #4a7bff;
+  background-color: #1db954;
   color: #fff;
-  padding: 8px 0;
-  border-radius: 5px;
+  padding: 8px 16px;
+  border-radius: 8px;
   text-decoration: none;
   font-weight: bold;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.2s ease-in-out;
 }
 
 .album-card a:hover {
-  background-color: #0056b3;
+  background-color: #25a145;
 }

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Header from '../componentes/Header';
 import Loading from '../componentes/Loading';
 import { getUser } from '../services/userAPI';
+import perfil from '../utils/perfil.png';
 
 interface User {
   name: string;
@@ -33,17 +34,23 @@ function Profile() {
   return (
     <div>
       <Header />
-      {loading ? <Loading /> : (
+      {loading ? (
+        <Loading />
+      ) : (
         <div>
-          <img src={user?.image} alt="imagem de perfil" className="image-perfil" />
+          {user?.image ? (
+            <img src={user.image} alt="imagem de perfil" className="image-perfil" />
+          ) : (
+            <img src={perfil} alt="icone de perfil" className="image-perfil" />
+          )}
           <Link to="/profile/edit">
             <button>Editar Perfil</button>
           </Link>
           <p>{user?.name}</p>
           <p>{user?.email}</p>
           <p>{user?.description}</p>
-        </div>)}
-
+        </div>
+      )}
     </div>
   );
 }

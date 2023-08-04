@@ -7,8 +7,6 @@ import NotFound from './pages/NotFound';
 import Profile from './pages/Profile';
 import ProfileEdit from './pages/ProfileEdit';
 import Search from './pages/Search';
-import './Styles/Login.css';
-import '@fortawesome/fontawesome-free/css/all.min.css';
 
 function App() {
   return (

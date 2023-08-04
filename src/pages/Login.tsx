@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-curly-spacing */
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createUser } from '../services/userAPI';
@@ -29,7 +30,7 @@ function Login() {
     try {
       await createUser({ name: inputValue });
       setLoading(false);
-      navigate('/search');
+      navigate('/search'); // Redirecionar para a página de pesquisa após o login
     } catch (error) {
       console.log('Error creating user:', error);
       setLoading(false);

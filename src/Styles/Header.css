@@ -42,12 +42,14 @@
   color: #fff;
   margin-right: 5px;
   font-family: 'Exo 2', sans-serif;
+  /* Use the "Chaps Tunes" font */
 }
 
 .header-text-tunes {
   font-size: 24px;
   color: #1db954;
   font-family: 'Exo 2', sans-serif;
+  /* Use the "Chaps Tunes" font */
 }
 
 .nav-list {
@@ -69,6 +71,8 @@
   border-radius: 0;
   transition: background-color 0.2s ease-in-out;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  font-family: 'Exo 2', sans-serif;
+  /* Use the "Chaps Tunes" font */
 }
 
 .nav-link:hover {
@@ -81,7 +85,7 @@
   align-items: center;
 }
 
-.user-icon {
+.image-perfil {
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -92,4 +96,6 @@
   font-size: 16px;
   color: #fff;
   font-weight: bold;
+  font-family: 'Exo 2', sans-serif;
+  /* Use the "Chaps Tunes" font */
 }
