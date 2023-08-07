@@ -1,0 +1,61 @@
+.album-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  background-color: #f0f0f0;
+  /* Cor de fundo */
+  background-image: url('../utils/pattern.png');
+  /* Padrão de fundo */
+  background-repeat: repeat;
+  background-blend-mode: overlay;
+  color: #fff;
+  width: 100%;
+  height: 100vh;
+}
+
+.centered-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: #1f2631;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  max-width: 1000px;
+  width: 100%;
+  margin: 20px auto;
+}
+
+.album-info {
+  text-align: left;
+  margin-right: 20px;
+}
+
+.album-info img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid #fff;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.album-info h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 10px;
+  color: #fff;
+}
+
+.album-info h3 {
+  font-size: 18px;
+  color: #ccc;
+}
+
+.music-list {
+  flex: 1;
+  overflow-y: auto;
+  max-height: 80vh;
+}

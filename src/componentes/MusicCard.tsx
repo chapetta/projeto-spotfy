@@ -1,6 +1,8 @@
 /* eslint-disable react/jsx-curly-spacing */
 import { useState, useEffect } from 'react';
+import { MdFavorite, MdFavoriteBorder } from 'react-icons/md';
 import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
+import '../Styles/MusicCard.css';
 
 interface Music {
   trackName: string;
@@ -12,18 +14,18 @@ interface Music {
 interface MusicCardProps {
   musicInfo: Music;
   setLoading: (loading: boolean) => void;
-  onRemove: (trackId: string) => void;
 }
 
-function MusicCard({ musicInfo, setLoading, onRemove }: MusicCardProps) {
+function MusicCard({ musicInfo, setLoading }: MusicCardProps) {
   const [favorite, setFavorite] = useState(false);
 
   useEffect(() => {
     const fetchFavoriteSongs = async () => {
       const favoriteSongs = await getFavoriteSongs();
       if (Array.isArray(favoriteSongs)) {
-        const isFavorite = favoriteSongs
-          .some((song: Music) => song.trackId === musicInfo.trackId);
+        const isFavorite = favoriteSongs.some(
+          (song: Music) => song.trackId === musicInfo.trackId,
+        );
         setFavorite(isFavorite);
       }
     };
@@ -40,7 +42,6 @@ function MusicCard({ musicInfo, setLoading, onRemove }: MusicCardProps) {
         await addSong(musicInfo);
         setFavorite(true);
       }
-
       setLoading(false);
     } catch (error) {
       console.log(error);
@@ -49,22 +50,28 @@ function MusicCard({ musicInfo, setLoading, onRemove }: MusicCardProps) {
   }
 
   return (
-    <div>
-      <h3>{musicInfo.trackName}</h3>
-      <img src={musicInfo.artworkUrl100} alt="Album Artwork" />
-      <audio data-testid="audio-component" src={musicInfo.previewUrl} controls>
-        <track kind="captions" />
+    <div className="music-card">
+      <div className="music-image">
+        <img src={musicInfo.artworkUrl100} alt="Album Artwork" />
+      </div>
+      <div className="music-info">
+        <h3>{musicInfo.trackName}</h3>
+      </div>
+      <audio src={musicInfo.previewUrl} controls>
+        <track kind="captions" srcLang="en" label="English captions" />
         Your browser does not support the
         {' '}
         <code>audio</code>
         {' '}
         element.
       </audio>
-      <input
-        type="checkbox"
-        onChange={handleCheckBox}
-        checked={favorite}
-      />
+      <button onClick={handleCheckBox} className="favorite-button">
+        {favorite ? (
+          <MdFavorite color="red" size={20} />
+        ) : (
+          <MdFavoriteBorder color="black" size={20} />
+        )}
+      </button>
     </div>
   );
 }

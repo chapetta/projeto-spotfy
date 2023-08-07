@@ -1,0 +1,57 @@
+.music-card {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  width: 95%;
+}
+
+.music-image {
+  margin-right: 10px;
+}
+
+.music-image img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.music-info {
+  flex: 1;
+  width: 80%;
+}
+
+.music-info h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+  color: #1f2631;
+}
+
+.music-card audio {
+  flex: 1;
+}
+
+.music-card button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  align-items: center;
+}
+
+.music-card .heart-icon {
+  margin-right: 5px;
+}
+
+.heart-icon path {
+  fill: red;
+}
+
+.favorite-button {
+  margin-right: 50px;
+}

@@ -5,12 +5,14 @@ import Header from '../componentes/Header';
 import MusicCard from '../componentes/MusicCard';
 import getMusics from '../services/musicsAPI';
 import Loading from '../componentes/Loading';
+import '../Styles/Album.css';
 
 function Album() {
   const { id } = useParams();
   const [albumInfos, setAlbumInfos] = useState([]);
   const [artistName, setArtistName] = useState('');
   const [albumName, setAlbumName] = useState('');
+  const [imageAlbum, setImageAlbum] = useState('');
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -21,6 +23,7 @@ function Album() {
           setAlbumInfos(response.slice(1));
           setArtistName(response[0].artistName);
           setAlbumName(response[0].collectionName);
+          setImageAlbum(response[0].artworkUrl100);
           setLoading(false);
         } else {
           setLoading(false);
@@ -35,26 +38,30 @@ function Album() {
   }, [id]);
 
   return (
-    <div>
+    <div className="album-page">
       <Header />
       {loading ? (
         <Loading />
       ) : (
-        <div>
-          <h2 data-testid="artist-name">{artistName}</h2>
-          <h3 data-testid="album-name">{albumName}</h3>
-          {albumInfos.length > 0 ? (
-            albumInfos.map((music) => (
-              <div key={music.trackId}>
+        <div className="centered-container">
+          <div className="album-info">
+            <img src={imageAlbum} alt="Album Cover" />
+            <h2>{artistName}</h2>
+            <h3>{albumName}</h3>
+          </div>
+          <div className="music-list">
+            {albumInfos.length > 0 ? (
+              albumInfos.map((music) => (
                 <MusicCard
+                  key={music.trackId}
                   musicInfo={music}
                   setLoading={setLoading}
                 />
-              </div>
-            ))
-          ) : (
-            <h3>No songs found for this album</h3>
-          )}
+              ))
+            ) : (
+              <h3>No songs found for this album</h3>
+            )}
+          </div>
         </div>
       )}
     </div>
